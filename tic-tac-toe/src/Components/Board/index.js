@@ -1,12 +1,13 @@
 import Square from "../Square";
+import css from "./index.module.css";
 
-function Board({ state, makeAMove }) {
+function Board({ board, makeAMove }) {
   //how to use function?
 
   return (
-    <div>
-      {state.map((i, ind) => (
-        <Square squareCont={i} key={ind} />
+    <div className={css.gridContainer}>
+      {board.map((item, ind) => (
+        <Square text={item} key={ind} value={ind} />
       ))}
     </div>
   );

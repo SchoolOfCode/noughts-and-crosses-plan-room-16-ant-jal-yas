@@ -1,11 +1,11 @@
 import { useState } from "react";
+import css from "./index.module.css";
 
-export default function Square({ squarecont }) {
-  //missing function?
-  if (clicked) {
-    return <div>{squarecont}</div>;
-  } else {
-    <div></div>;
-  }
-  // return <div>{state}</div>
+export default function Square({ text, value }) {
+  return (
+    <div key={value} className={css.gridItem}>
+      {value}
+    </div>
+  );
+  // <div style={{ border: "3px solid black" }}>{text}</div>;
 }

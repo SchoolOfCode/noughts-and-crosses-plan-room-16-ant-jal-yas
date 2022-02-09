@@ -1,30 +1,30 @@
-import {useEffect, useState} from "react";
-import Board from "../Board"
-
+import { useEffect, useState } from "react";
+import Board from "../Board";
 
 export default function Game() {
-const [board, updateBoard] = useState([null,null,null,null,null,null,null,null,null]);
-const [turn, setTurn] = useState("x");
+  const [board, updateBoard] = useState(Array(9).fill(null));
+  const [turn, setTurn] = useState("x");
 
-useEffect(() => {
+  useEffect(() => {}, [Board]);
 
-}, [Board])
+  function makeAMove(playerMove, key) {
+    const updatedArray = [
+      ...board.slice(0, key),
+      playerMove,
+      ...board.slice(key + 1),
+    ];
+    updateBoard(updatedArray);
 
-function makeAMove(playerMove, key) {
-const updatedArray = [...board.slice(0, key), playerMove, ...board.slice(key + 1)];
-updateBoard(updatedArray);
+    if (turn === "x") {
+      setTurn("o");
+    } else {
+      setTurn("x");
+    }
+  }
 
-
-if (turn === "x") {
-    setTurn("o");
-} else {
-    setTurn("x");
-}
-}
-
-
-return <div>
-        <Board board={board} onClick={makeAMove} />
-</div>
-
+  return (
+    <div>
+      <Board board={board} onClick={makeAMove} />
+    </div>
+  );
 }
