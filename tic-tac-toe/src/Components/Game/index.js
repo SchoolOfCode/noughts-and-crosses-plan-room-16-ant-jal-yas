@@ -13,6 +13,10 @@ export default function Game() {
       playerMove,
       ...board.slice(key + 1),
     ];
+    if(board[key] !== null){
+      alert("Im not empty!")
+      return
+    }
     updateBoard(updatedArray);
 
     if (turn === "x") {
@@ -24,7 +28,7 @@ export default function Game() {
 
   return (
     <div>
-      <Board board={board} onClick={makeAMove} />
+      <Board board={board} onClick={makeAMove} turn={turn} />
     </div>
   );
 }
