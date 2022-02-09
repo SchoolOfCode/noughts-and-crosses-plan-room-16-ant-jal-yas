@@ -5,8 +5,8 @@ function Board({ state, makeAMove }) {
 
   return (
     <div>
-      {state.map((i) => (
-        <Square squareCont={i} />
+      {state.map((i, ind) => (
+        <Square squareCont={i} key={ind} />
       ))}
     </div>
   );
